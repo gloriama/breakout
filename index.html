@@ -20,12 +20,27 @@
     <script>
       var canvas = document.getElementById('game');
       var ctx = canvas.getContext('2d');
+      var x = 200;
+      var y = 300;
+      var clearCanvas = function() {
+        ctx.clearRect(0, 0, 480, 320);
+      }
 
-      ctx.beginPath();
-      ctx.rect(20, 40, 50, 50);
-      ctx.fillStyle = '#ff0000';
-      ctx.fill();
-      ctx.closePath();
+      var drawCircle = function(centerX, centerY) {
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, 50, 0, Math.PI*2);
+        ctx.fillStyle = 'green';
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      setInterval(function() {
+        clearCanvas();
+        drawCircle(x, y);
+        x += 5;
+        y -= 5;
+      }, 10);
+
     </script>
   </body>
 </html>
