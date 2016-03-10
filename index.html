@@ -5,14 +5,27 @@
     <style>
       .game {
         background: #eee;
-        width: 480px;
-        height: 320px;
       }
     </style>
   </head>
 
   <body>
-    <canvas class="game">
+    <!-- Create canvas, which will house the game -->
+    <!-- Width and height are set here, to set "real" dimensions -->
+    <!-- Setting width/height in CSS would just stretch the canvas -->
+    <canvas class="game" id="game" width="480" height="320">
+
     </canvas>
+
+    <script>
+      var canvas = document.getElementById('game');
+      var ctx = canvas.getContext('2d');
+
+      ctx.beginPath();
+      ctx.rect(20, 40, 50, 50);
+      ctx.fillStyle = '#ff0000';
+      ctx.fill();
+      ctx.closePath();
+    </script>
   </body>
 </html>
