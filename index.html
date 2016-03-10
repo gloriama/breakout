@@ -20,10 +20,13 @@
     <script>
       var canvas = document.getElementById('game');
       var ctx = canvas.getContext('2d');
-      var x = 200;
-      var y = 300;
+      var x = canvas.width/2;
+      var y = canvas.height-30;
+      var dx = 5;
+      var dy = -5;
+
       var clearCanvas = function() {
-        ctx.clearRect(0, 0, 480, 320);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
       }
 
       var drawCircle = function(centerX, centerY) {
@@ -37,9 +40,9 @@
       setInterval(function() {
         clearCanvas();
         drawCircle(x, y);
-        x += 5;
-        y -= 5;
-      }, 10);
+        x += dx;
+        y += dy;
+      }, 25);
 
     </script>
   </body>
