@@ -20,10 +20,11 @@
     <script>
       var canvas = document.getElementById('game');
       var ctx = canvas.getContext('2d');
+      var radius = 10;
       var x = canvas.width/2;
-      var y = canvas.height-30;
-      var dx = 5;
-      var dy = -5;
+      var y = canvas.height-radius;
+      var dx = 2;
+      var dy = -2;
 
       var clearCanvas = function() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -31,7 +32,7 @@
 
       var drawCircle = function(centerX, centerY) {
         ctx.beginPath();
-        ctx.arc(centerX, centerY, 50, 0, Math.PI*2);
+        ctx.arc(centerX, centerY, radius, 0, Math.PI*2);
         ctx.fillStyle = 'green';
         ctx.fill();
         ctx.closePath();
@@ -40,9 +41,15 @@
       setInterval(function() {
         clearCanvas();
         drawCircle(x, y);
+        if (x + dx > canvas.width-radius || x + dx < radius) {
+          dx *= -1;
+        }
+        if (y + dy > canvas.height-radius || y + dy < radius) {
+          dy *= -1;
+        }
         x += dx;
         y += dy;
-      }, 25);
+      }, 10);
 
     </script>
   </body>
